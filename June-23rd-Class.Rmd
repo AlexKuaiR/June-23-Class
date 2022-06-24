@@ -1,0 +1,29 @@
+---
+title: "June-23rd-Class"
+author: "Alex Kuai"
+date: '2022-06-24'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(billboard)
+```
+
+```{r}
+x <- wiki_hot_100s |> 
+  as_tibble() |> 
+  # wiki_hot_100s is a data frame --> a simpler form of tibble
+  mutate(year = as.numeric(year)) 
+  #glimpse()
+```
+
+```{r}
+x |> 
+  group_by(year) |> 
+  distinct(artist) |> 
+  summarize(distinct_artist = n())
+```
+
+
